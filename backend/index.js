@@ -1,17 +1,9 @@
-const express = require('express');
-const app = express();
+require("dotenv").config();
 
-// Middleware pour parser le JSON des requêtes
-app.use(express.json());
+const app = require("./app");
 
-// Routes
-const indexRouters = require('./src/routes/indexRouters');
+const PORT = process.env.PORT ?? 3000;
 
-app.use('/api', indexRouters);
-
-
-// Démarrage du serveur
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Serveur lancé sur le port ${PORT}`);
+app.listen(PORT,()=>{
+    console.log(`Serveur accessible sur http://localhost:${PORT}`);
 });
