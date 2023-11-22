@@ -1,28 +1,47 @@
-const weatherService = require('../services/weatherService');
-const weatherCache = require('../cache');
+const weatherService = require("../services/weatherService");
+const cache = require("../cache");
+
+const clearCacheTwiceDaily = () => {
+  cache.clearCache();
+};
+
+setInterval(() => {
+  const now = new Date();
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+
+  if ((hours === 0 || hours === 12) && minutes === 0) {
+    clearCacheTwiceDaily();
+  }
+}, 60000);
 
 const getWeatherData = async (req, res) => {
   try {
     const { departmentCode } = req.body;
-    console.log("1");
+
     if (!departmentCode) {
-      return res.status(400).json({ message: 'Code de département non valide' });
+      return res
+        .status(400)
+        .json({ message: "Code de département non valide" });
     }
-    console.log("2");
+
+    const weatherCache = cache.getCache();
     if (weatherCache[departmentCode]) {
       return res.status(200).json(weatherCache[departmentCode]);
     }
-    console.log("3");
-    const weatherData = await weatherService.fetchWeatherDataByDepartmentCode(departmentCode);
-    console.log("4");
+
+    const weatherData = await weatherService.fetchWeatherDataByDepartmentCode(
+      departmentCode
+    );
+
     weatherCache[departmentCode] = weatherData;
-    console.log("5");
+
     res.status(200).json(weatherData);
-    console.log("6");
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'Erreur lors de la récupération des données météo' });
-    console.log("7");
+    res
+      .status(500)
+      .json({ message: "Erreur lors de la récupération des données météo" });
   }
 };
 
