@@ -3,7 +3,7 @@ const weatherCache = require('../cache');
 
 const getWeatherData = async (req, res) => {
   try {
-    const { departmentCode } = req.query.departmentCode;
+    const { departmentCode } = req.body;
 
     if (!departmentCode) {
       return res.status(400).json({ message: 'Code de département non valide' });
