@@ -1,4 +1,5 @@
 const departmentCoordinates = require('./departmentCoordinates');
+const { calculateDailyAverages } = require('./weatherDataProcessor');
 
 const fetchWeatherDataByDepartmentCode = async (departmentCode) => {
   try {
@@ -12,7 +13,9 @@ const fetchWeatherDataByDepartmentCode = async (departmentCode) => {
     const response = await fetch(apiUrl);
     const weatherData = await response.json();
 
-    return weatherData;
+    const dailyAverages = calculateDailyAverages(weatherData);
+
+    return dailyAverages;
   } catch (error) {
     throw new Error('Erreur lors de la récupération des données météo depuis l\'API');
   }
