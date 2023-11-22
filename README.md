@@ -1,3 +1,4 @@
+![MyShroom logo](https://i.ibb.co/5Y9nvJj/Group.png "MyShroom logo")
 # MyShroom
 
 MyShroom est une application qui fournit des prévisions de croissance de champignons basées sur les données météorologiques départementale.
