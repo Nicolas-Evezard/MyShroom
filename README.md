@@ -21,7 +21,7 @@ Cette application permet à l'utilisateur de récupérer les informations mété
 - Node.js
 - Express.js
 - MongoDB PostgreSQL
-- React
+- React / Vite
 - Tailwind CSS
 - Open-Meteo
 
