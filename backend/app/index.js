@@ -4,12 +4,7 @@ require("dotenv").config();
 
 const app = express();
 
-// Utilisation du middleware CORS
-app.use(cors({
-    origin: "http://localhost:5173",
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  }));
+app.use(cors());
 
 app.use(express.json());
 
