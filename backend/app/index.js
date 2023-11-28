@@ -1,10 +1,15 @@
-const path = require('path');
+const express = require('express');
+const cors = require('cors');
+require('dotenv').config();
 
-// import du module Express
-const express = require("express");
-
-// déclaration de notre app Express
 const app = express();
+
+// Utilisation du middleware CORS
+app.use(cors({
+    origin: process.env.FRONTEND_URL,
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  }));
 
 app.use(express.json());
 
