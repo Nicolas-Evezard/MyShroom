@@ -1,12 +1,16 @@
-import './App.css'
+import React, { useEffect } from "react";
+import "./App.css";
 
-function App() {
+import { fetchWeatherData } from "./tools/SearchWeatherData";
+
+
+const App = () => {
 
   return (
-    <>
+    <div className="">
 
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default App
+export default App;
