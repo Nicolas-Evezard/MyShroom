@@ -1,12 +1,12 @@
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config();
+require("dotenv").config();
 
 const app = express();
 
 // Utilisation du middleware CORS
 app.use(cors({
-    origin: process.env.FRONTEND_URL,
+    origin: "http://localhost:5173",
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization'],
   }));
